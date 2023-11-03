@@ -8,3 +8,20 @@ python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
 python manage.py startapp blog
+
+#GIT
+download github and its desktop version
+install both of them
+create new repository in github
+
+git init
+create .gitignore:
+    - __pychache/
+    - .*pyc
+    - venv/
+    - .idea/
+git add .
+git commit -m "First commit"
+git branch -M main
+git..... detil with link
+git push u origin main

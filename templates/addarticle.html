@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+<div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h1>Добавить статью</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form | crispy }}<br>
+            <button type="submit" class="btn btn-success">Добавить</button>
+        </form>
+      </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+
+<div class="row">
+    <div class="col-md-10 offset-md-3">
+        <div class="col-lg-8">
+        <!-- Post content-->
+        <article>
+            <!-- Post header-->
+            <header class="mb-4">
+                <!-- Post title-->
+                <h1 class="fw-bolder mb-1">{{ article.title }}</h1>
+                <!-- Post meta content-->
+                <div class="text-muted fst-italic mb-2">Опубликовано {{article.created_date}} автором {{article.author.username}}</div>
+                <!-- Post categories-->
+                <!--- <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
+                <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> --->
+            </header>
+            <!-- Preview image figure-->
+            {% if article.article_image %}
+                <figure class="mb-4"><img class="img-fluid rounded" src="{{ article.article_image.url }}" alt="..." /></figure>
+            <!-- Post content-->
+            {% else %}
+            {% endif %}
+            <section class="mb-5">
+                {{article.content | safe}}
+            </section>
+        </article>
+        <hr>
+        <h4>Комментарии</h4>
+            {% if comments %}
+                {% for comment in comments %}
+                    <div class="media mb-4">
+                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                    <div class="media-body">
+                        <h5 class="mt-0">{{comment.comment_author}}</h5>
+                       {{comment.comment_date}}<br>
+                       {{comment.comment_content}}
+                    </div>
+                    </div>
+                {% endfor %}
+
+            {% else %}
+                <div class="alert alert-danger">Комментариев пока нет, вы можете быть первым комментатором</div>
+            {% endif %}
+            <div class="card my-4">
+                <h5 class="card-header">Оставить комментарий:</h5>
+                <div class="card-body">
+                <form method = "post" action = "{% url 'blog:comment' article.id %}">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                    <label>Имя</label>
+                    <input name = 'comment_author' type="text" class="form-control"  placeholder="Андрей">
+                    </div>
+
+                    <div class="form-group">
+                      <label>Ваше мнение</label>
+                        <textarea name = 'comment_content' class="form-control" rows="3"></textarea>
+                    </div><br>
+
+                      <button type="submit" class="btn btn-primary">Отправлять</button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+{% endblock %}

