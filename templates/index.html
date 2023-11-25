@@ -8,9 +8,10 @@
           Successfully entered {{request.user.username}}
       {% else %}
       {% endif %}
-      <script charset="utf-8" type="text/javascript" src="//tezbile.kg/iframe.js"></script>
+      <script charset="utf-8" type="text/javascript" src="//tezbilet.kg/iframe.js"></script>
   </p>
 </div>
+
 
 
 
@@ -36,7 +37,7 @@
                     {% endif %}
                   <div class="card-body">
                     <h5 class="card-title">{{ article.title }}</h5>
-                    <p class="card-text">{{  article.content|safe|truncatewords:20  }}</p>
+                    <p class="card-text">{{  article.content|safe|truncatewords:10  }}</p>
                   </div>
                 <div class="card-body d-flex flex-column">
                         <a style="center" href="{% url 'blog:detail' article.id %}" class="btn btn-primary">Читать далее</a>
