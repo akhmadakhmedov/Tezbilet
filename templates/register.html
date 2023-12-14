@@ -1,14 +1,15 @@
 {% extends 'layout.html' %}
 {% load crispy_forms_tags %}
+{% block title %} | Создать аккоунт {% endblock %}
 
 {% block body %}
 <div class="row">
     <div class="col-md-6 offset-md-3">
-        <h1>Register page</h1>
+        <h1>Создать аккоунт</h1>
         <form method="post">
             {% csrf_token %}
             {{form | crispy}}<br>
-            <button type="sumbit" class="btn btn-success">Register</button>
+            <button type="sumbit" class="btn btn-success">Создать</button>
         </form>
     </div>
 </div>
