@@ -45,6 +45,10 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'ckeditor',
     'kassa',
+    'imagekit',
+    'django_cleanup.apps.CleanupConfig',
+
+
 ]
 
 MIDDLEWARE = [
@@ -153,7 +157,5 @@ CKEDITOR_CONFIGS = {
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
+
+

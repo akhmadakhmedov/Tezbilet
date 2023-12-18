@@ -1,12 +1,23 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from imagekit.models import ImageSpecField, ProcessedImageField
+from imagekit.processors import ResizeToFill
+
 
 class Blog(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name="Автор")
     title = models.CharField(max_length=100, verbose_name="Заголовок")
     content = RichTextField()
     created_date = models.DateField(auto_now_add=True, verbose_name="Дата создания")
-    article_image = models.FileField(blank=True, null=True)
+    article_image = ProcessedImageField(upload_to='blog_photos',
+                                             processors=[ResizeToFill(360,300)],
+                                             format='JPEG',
+                                             options={'quality':60})
+    article_image_thumbnail = ImageSpecField(source = 'article_image',
+                                        processors=[ResizeToFill(360, 300)],
+                                        format='JPEG',
+                                        options={'quality': 60})
+
     category = models.CharField(max_length=50, null=True, blank=True, verbose_name='Категория')
     main_article = models.BooleanField(default=False)
 

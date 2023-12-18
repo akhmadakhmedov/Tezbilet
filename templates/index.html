@@ -23,9 +23,9 @@
     {% if articles %}
         {% for article in articles %}
             <div class="card">
-                  {% if article.article_image %}
-                        <a href="{% url 'blog:detail' article.id %}"><img src="{{ article.article_image.url }}" class="img-fluid" alt="Responsive image" /></a>
-                    {% endif %}
+                <div class="article__thumbnail article__item">
+                  <img class="article__thumbnail__img" src="{{ article.article_image_thumbnail.url }}"/>
+                </div>
                   <div class="card-body">
                     <h5 class="card-title">{{ article.title }}</h5>
                     <p class="card-text">{{  article.content|safe|truncatewords:10  }}</p>
