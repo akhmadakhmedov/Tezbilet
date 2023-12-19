@@ -88,13 +88,20 @@ WSGI_APPLICATION = 'tezbilet.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tezbilet_prod',
-        'USER': 'dbadmin',
-        'PASSWORD': '12345',
-        'HOST': 'localhost'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': 'tezbilet_prod',
+#        'USER': 'dbadmin',
+#        'PASSWORD': '12345',
+#        'HOST': 'localhost'
+#    }
+#}
 
 
 # Password validation
@@ -156,11 +163,5 @@ CKEDITOR_CONFIGS = {
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-
-try:
-    from .local_settings import *
-except ImportError:
-    pass
 
 
