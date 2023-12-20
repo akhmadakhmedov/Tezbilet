@@ -5,10 +5,11 @@ from imagekit.processors import ResizeToFill
 
 
 class Blog(models.Model):
-    author = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name="Автор")
-    title = models.CharField(max_length=100, verbose_name="Заголовок")
+    objects = None
+    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
     content = RichTextField()
-    created_date = models.DateField(auto_now_add=True, verbose_name="Дата создания")
+    created_date = models.DateField(auto_now_add=True)
     article_image = ProcessedImageField(upload_to='blog_photos',
                                              processors=[ResizeToFill(360,300)],
                                              format='JPEG',
@@ -18,7 +19,7 @@ class Blog(models.Model):
                                         format='JPEG',
                                         options={'quality': 60})
 
-    category = models.CharField(max_length=50, null=True, blank=True, verbose_name='Категория')
+    category = models.CharField(max_length=50, null=True, blank=True)
     main_article = models.BooleanField(default=False)
 
     def __str__(self):
@@ -29,8 +30,8 @@ class Blog(models.Model):
 
 class Comment(models.Model):
     article = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
-    comment_author = models.CharField(max_length=50, verbose_name='Имя')
-    comment_content = models.CharField(max_length=100, verbose_name='Комментарий')
+    comment_author = models.CharField(max_length=50)
+    comment_content = models.CharField(max_length=100)
     comment_date = models.DateField(auto_now_add=True)
 
 

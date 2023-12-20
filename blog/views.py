@@ -13,11 +13,11 @@ def articles(request):
     articles = Blog.objects.all()
     return render(request, 'articles.html', {"articles": articles})
 
-def index(request):
-    articles = Blog.objects.all()
-    context = {"articles": articles}
-    return render(request, 'index.html', context)
 
+def index(request):
+    all_articles = Blog.objects.all()
+    context = {"all_articles": all_articles}
+    return render(request, 'index.html', context)
 
 
 def about(request):
