@@ -89,10 +89,11 @@ WSGI_APPLICATION = 'tezbilet.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tezbilet_prod',
-        'USER': 'dbadmin',
-        'PASSWORD': '12345',
-        'HOST': 'localhost'
+        'NAME': 'tezbiletdb',
+        'USER': 'postgres',
+        'PASSWORD': 'Realahmed+1',
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
 
@@ -164,7 +165,4 @@ CKEDITOR_CONFIGS = {
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
+
