@@ -15,8 +15,8 @@ def articles(request):
 
 
 def index(request):
-    all_articles = Blog.objects.all()
-    context = {"all_articles": all_articles}
+    articles = Blog.objects.all()
+    context = {"articles": articles}
     return render(request, 'index.html', context)
 
 
