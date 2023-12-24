@@ -84,12 +84,8 @@ WSGI_APPLICATION = 'tezbilet.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tezbilet_prod',
-        'USER': 'dbadmin',
-        'PASSWORD': 'Realahmed+1',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
