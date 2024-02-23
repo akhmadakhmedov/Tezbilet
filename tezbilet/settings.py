@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-f!xtlj-c5e5y1w^5+)0mhw5fk-t34q^4t8)kk$u#$!6y-=33d_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['165.232.70.83', 'tezbilet.kg', 'www.tezbilet.kg']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -148,7 +148,7 @@ CKEDITOR_CONFIGS = {
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
 try:
